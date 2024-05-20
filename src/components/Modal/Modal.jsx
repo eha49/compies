@@ -29,39 +29,71 @@ function Modal({ title, handleDismiss, children }) {
         <Wrapper>
           <ModalBackdrop
             onClick={handleDismiss}
-            animate={{ opacity: 0.75 }}
-            initial={{ opacity: 0 }}
-            transition={{
-              ease: "easeOut",
-              duration: 0.3,
+            exit={{
+              opacity: 0,
+              transition: {
+                ease: "easeIn",
+                duration: 0.6,
+              },
             }}
+            animate={{
+              opacity: 0.75,
+              transition: {
+                ease: "easeOut",
+                duration: 0.3,
+                restDelta: 0.01,
+              },
+            }}
+            initial={{ opacity: 0 }}
           />
           <ModalContent
             aria-modal="true"
             aria-label={title}
             role="dialog"
-            transition={{
-              type: "spring",
-              stiffness: 200,
-              damping: 40,
-              ease: "easeOut",
-              delay: 0.1,
-            }}
-            initial={{ y: "100%" }}
+            initial={{ y: "100vh" }}
             animate={{
               y: 0,
+              transition: {
+                type: "spring",
+                stiffness: 200,
+                damping: 40,
+                ease: "easeOut",
+                delay: 0.1,
+                restDelta: 0.01,
+              },
+            }}
+            exit={{
+              y: "100vh",
+              transition: {
+                type: "spring",
+                stiffness: 200,
+                damping: 40,
+                ease: "easeIn",
+              },
             }}
           >
             <Button
               onClick={handleDismiss}
               initial={{ y: 0 }}
-              animate={{ y: "-100%" }}
-              transition={{
-                type: "spring",
-                stiffness: 200,
-                damping: 40,
-                delay: 0.2,
-                ease: "easeOut",
+              animate={{
+                y: "-100%",
+                transition: {
+                  type: "spring",
+                  stiffness: 200,
+                  damping: 40,
+                  delay: 0.4,
+                  ease: "easeOut",
+                  restDelta: 0.01,
+                },
+              }}
+              exit={{
+                y: 0,
+                transition: {
+                  type: "spring",
+                  stiffness: 200,
+                  damping: 40,
+                  ease: "easeIn",
+                },
               }}
             >
               <Close />

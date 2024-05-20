@@ -1,4 +1,5 @@
 import React from "react";
+import { AnimatePresence } from "framer-motion";
 import LoginForm from "./components/Modal/LoginForm";
 import Modal from "./components/Modal/Modal";
 import { styled, createGlobalStyle } from "styled-components";
@@ -14,11 +15,13 @@ function App() {
   return (
     <>
       <Button onClick={() => showIsOpen(true)}>Open Modal</Button>
-      {isOpen && (
-        <Modal title="Log In" handleDismiss={handleDismiss}>
-          <LoginForm />
-        </Modal>
-      )}
+      <AnimatePresence>
+        {isOpen && (
+          <Modal title="Log In" handleDismiss={handleDismiss}>
+            <LoginForm />
+          </Modal>
+        )}
+      </AnimatePresence>
       <GlobalStyles />
     </>
   );
@@ -40,6 +43,7 @@ const GlobalStyles = createGlobalStyle`
   body {
     display: grid;
     place-content: center;
+    overflow: hidden;
   }
 `;
 
