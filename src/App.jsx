@@ -1,5 +1,5 @@
-import LoginForm from "./components/Modal/LoginForm";
 import React from "react";
+import LoginForm from "./components/Modal/LoginForm";
 import Modal from "./components/Modal/Modal";
 import { styled, createGlobalStyle } from "styled-components";
 import { COLORS } from "./components/constants";
