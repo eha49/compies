@@ -1,5 +1,6 @@
 import React from "react";
 import { createPortal } from "react-dom";
+import { motion } from "framer-motion";
 import styled from "styled-components";
 import { X as Close } from "react-feather";
 import FocusLock from "react-focus-lock";
@@ -26,13 +27,43 @@ function Modal({ title, handleDismiss, children }) {
     <FocusLock returnFocus={true}>
       <RemoveScroll>
         <Wrapper>
-          <ModalBackdrop onClick={handleDismiss} />
+          <ModalBackdrop
+            onClick={handleDismiss}
+            animate={{ opacity: 0.75 }}
+            initial={{ opacity: 0 }}
+            transition={{
+              ease: "easeOut",
+              duration: 0.3,
+            }}
+          />
           <ModalContent
             aria-modal="true"
             aria-label={title}
             role="dialog"
+            transition={{
+              type: "spring",
+              stiffness: 200,
+              damping: 40,
+              ease: "easeOut",
+              delay: 0.1,
+            }}
+            initial={{ y: "100%" }}
+            animate={{
+              y: 0,
+            }}
           >
-            <Button onClick={handleDismiss}>
+            <Button
+              onClick={handleDismiss}
+              initial={{ y: 0 }}
+              animate={{ y: "-100%" }}
+              transition={{
+                type: "spring",
+                stiffness: 200,
+                damping: 40,
+                delay: 0.2,
+                ease: "easeOut",
+              }}
+            >
               <Close />
               <VisuallyHidden>Dismiss Modal</VisuallyHidden>
             </Button>
@@ -53,13 +84,13 @@ const Wrapper = styled.div`
   place-content: center;
   padding: 16px;
 `;
-const ModalBackdrop = styled.div`
+const ModalBackdrop = styled(motion.div)`
   position: absolute;
   inset: 0;
-  background-color: hsl(0deg 0% 0% /0.75);
+  background-color: hsl(0deg 0% 0%);
 `;
 
-const ModalContent = styled.div`
+const ModalContent = styled(motion.div)`
   position: relative;
   width: 350px;
   max-width: 100vw;
@@ -74,11 +105,10 @@ const ModalContent = styled.div`
   }
 `;
 
-const Button = styled.button`
+const Button = styled(motion.button)`
   position: absolute;
   top: 0;
   right: 0;
-  transform: translateY(-100%);
   padding: 18px;
   cursor: pointer;
   background: transparent;
