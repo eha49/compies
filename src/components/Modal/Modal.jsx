@@ -140,7 +140,7 @@ const Button = styled(motion.button)`
   position: absolute;
   top: 0;
   right: 0;
-  padding: 18px;
+  padding: 16px;
   cursor: pointer;
   background: transparent;
   border: none;
