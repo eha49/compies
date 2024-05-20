@@ -37,13 +37,13 @@ const GlobalStyles = createGlobalStyle`
   html, body {
   height: 100%;
   background-color: ${COLORS.white};
- font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
  }
 
   body {
+    margin: 0;
     display: grid;
     place-content: center;
-    overflow: hidden;
   }
 `;
 
@@ -58,7 +58,7 @@ const Button = styled.button`
   cursor: pointer;
 
   &:focus {
-    outline: 2px solid c ${COLORS.dark};
+    outline: 2px solid ${COLORS.dark};
     outline-offset: 2px;
   }
 `;

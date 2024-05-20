@@ -58,7 +58,6 @@ function Modal({ title, handleDismiss, children }) {
                 stiffness: 200,
                 damping: 40,
                 ease: "easeOut",
-                delay: 0.1,
                 restDelta: 0.01,
               },
             }}
