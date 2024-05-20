@@ -1,4 +1,5 @@
 import React from "react";
+import { createPortal } from "react-dom";
 import styled from "styled-components";
 import { X as Close } from "react-feather";
 import FocusLock from "react-focus-lock";
@@ -21,11 +22,11 @@ function Modal({ title, handleDismiss, children }) {
     };
   }, [handleDismiss]);
 
-  return (
+  return createPortal(
     <FocusLock returnFocus={true}>
       <RemoveScroll>
         <Wrapper>
-          <ModalBackdrop />
+          <ModalBackdrop onClick={handleDismiss} />
           <ModalContent
             aria-modal="true"
             aria-label={title}
@@ -40,7 +41,8 @@ function Modal({ title, handleDismiss, children }) {
           </ModalContent>
         </Wrapper>
       </RemoveScroll>
-    </FocusLock>
+    </FocusLock>,
+    document.body
   );
 }
 
