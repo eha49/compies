@@ -53,20 +53,20 @@ const GlobalStyles = createGlobalStyle`
   }
 `;
 
-const Button = styled.button`
-  display: block;
-  padding: 12px 24px;
-  font-size: 1.12rem;
-  color: ${COLORS.white};
-  background-color: ${COLORS.dark};
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
+// const Button = styled.button`
+//   display: block;
+//   padding: 12px 24px;
+//   font-size: 1.12rem;
+//   color: ${COLORS.white};
+//   background-color: ${COLORS.dark};
+//   border: none;
+//   border-radius: 6px;
+//   cursor: pointer;
 
-  &:focus {
-    outline: 2px solid ${COLORS.dark};
-    outline-offset: 2px;
-  }
-`;
+//   &:focus {
+//     outline: 2px solid ${COLORS.dark};
+//     outline-offset: 2px;
+//   }
+// `;
 
 export default App;
