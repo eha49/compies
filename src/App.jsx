@@ -1,27 +1,33 @@
-import React from "react";
-import { AnimatePresence } from "framer-motion";
-import LoginForm from "./components/Modal/LoginForm";
-import Modal from "./components/Modal/Modal";
+// import React from "react";
+// import { AnimatePresence } from "framer-motion";
+// import LoginForm from "./components/Modal/LoginForm";
+// import Modal from "./components/Modal/Modal";
+import RadioGroup from "./components/RadioGroup/RadioGroup";
 import { styled, createGlobalStyle } from "styled-components";
-import { COLORS } from "./components/constants";
+import { COLORS, VALID_LANGUAGES } from "./components/constants";
 
 function App() {
-  const [isOpen, showIsOpen] = React.useState(false);
+  // const [isOpen, showIsOpen] = React.useState(false);
 
-  function handleDismiss() {
-    showIsOpen(false);
-  }
+  // function handleDismiss() {
+  //   showIsOpen(false);
+  // }
 
   return (
     <>
-      <Button onClick={() => showIsOpen(true)}>Open Modal</Button>
+      {/* <Button onClick={() => showIsOpen(true)}>Open Modal</Button>
       <AnimatePresence>
         {isOpen && (
           <Modal title="Log In" handleDismiss={handleDismiss}>
             <LoginForm />
           </Modal>
         )}
-      </AnimatePresence>
+      </AnimatePresence> */}
+      <RadioGroup
+        groupTitle="Select language"
+        groupItems={VALID_LANGUAGES}
+        itemName="current-language"
+      />
       <GlobalStyles />
     </>
   );
