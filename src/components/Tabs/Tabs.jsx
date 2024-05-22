@@ -6,13 +6,7 @@ const TabContext = React.createContext();
 
 function reducer(tab, action) {
   switch (action.type) {
-    case "tab1": {
-      return action.value;
-    }
-    case "tab2": {
-      return action.value;
-    }
-    case "tab3": {
+    case `${action.type}`: {
       return action.value;
     }
   }
