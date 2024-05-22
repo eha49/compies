@@ -2,7 +2,8 @@
 // import { AnimatePresence } from "framer-motion";
 // import LoginForm from "./components/Modal/LoginForm";
 // import Modal from "./components/Modal/Modal";
-import RadioGroup from "./components/RadioGroup/RadioGroup";
+// import RadioGroup from "./components/RadioGroup/RadioGroup";
+import Tabs from "./components/Tabs/Tabs";
 import { styled, createGlobalStyle } from "styled-components";
 import { COLORS, VALID_LANGUAGES } from "./components/constants";
 
@@ -23,11 +24,17 @@ function App() {
           </Modal>
         )}
       </AnimatePresence> */}
-      <RadioGroup
+      {/* <RadioGroup
         groupTitle="Select language"
         groupItems={VALID_LANGUAGES}
         itemName="current-language"
-      />
+      /> */}
+      <Tabs>
+        <Tabs.List>
+          <Tabs.Trigger>Account</Tabs.Trigger>
+          <Tabs.Trigger>Password</Tabs.Trigger>
+        </Tabs.List>
+      </Tabs>
       <GlobalStyles />
     </>
   );
