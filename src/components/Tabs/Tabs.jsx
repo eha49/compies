@@ -75,7 +75,7 @@ const Button = styled.button`
   padding: 12px 18px;
   border-bottom: ${(props) =>
     Object.is(props.$tab, props.$value)
-      ? "2px solid currentColor"
+      ? "1px solid currentColor"
       : "none"};
 
   ${TabList} & {
