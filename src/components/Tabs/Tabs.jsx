@@ -6,7 +6,7 @@ const TabContext = React.createContext();
 
 function Tabs({ children }) {
   const [tab, setTab] = React.useState("tab1");
-  console.log(tab);
+  console.log("re");
   return (
     <TabContext.Provider value={{ tab, setTab }}>
       <Wrapper>{children}</Wrapper>
@@ -34,8 +34,11 @@ function Trigger({ value, children }) {
 
 function Content({ value, children }) {
   const { tab } = React.useContext(TabContext);
-
-  return value === tab && <TabContent>{children}</TabContent>;
+  return (
+    <TabContent $value={value} $tab={tab}>
+      {children}
+    </TabContent>
+  );
 }
 
 const Wrapper = styled.div`
@@ -62,6 +65,8 @@ const Button = styled.button`
 const TabContent = styled.div`
   border-top: 1px solid ${COLORS.dark};
   padding: 16px;
+  display: ${(props) =>
+    Object.is(props.$tab, props.$value) ? "revert" : "none"};
 `;
 
 Tabs.List = List;
