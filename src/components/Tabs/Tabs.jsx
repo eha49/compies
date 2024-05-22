@@ -4,11 +4,21 @@ import { COLORS } from "../constants";
 
 const TabContext = React.createContext();
 
+function reducer(tab, action) {
+  switch (action.type) {
+    case "tab1": {
+      return action.value;
+    }
+    case "tab2": {
+      return action.value;
+    }
+  }
+}
+
 function Tabs({ children }) {
-  const [tab, setTab] = React.useState("tab1");
-  console.log("re");
+  const [tab, dispatch] = React.useReducer(reducer, "tab1");
   return (
-    <TabContext.Provider value={{ tab, setTab }}>
+    <TabContext.Provider value={{ tab, dispatch }}>
       <Wrapper>{children}</Wrapper>
     </TabContext.Provider>
   );
@@ -23,41 +33,14 @@ function List({ children }) {
 }
 
 function Trigger({ value, children }) {
-  const { tab, setTab } = React.useContext(TabContext);
-
-  React.useEffect(() => {
-    function handleKeyDown(event) {
-      const currentFocusedElement = document.activeElement;
-      if (currentFocusedElement.role !== "tab") {
-        return;
-      }
-
-      if (event.code === "ArrowRight") {
-        currentFocusedElement.nextElementSibling?.focus();
-      }
-      if (event.code === "ArrowLeft") {
-        currentFocusedElement.previousElementSibling?.focus();
-      }
-      if (event.code === "Home") {
-        currentFocusedElement.parentElement.firstElementChild.focus();
-      }
-      if (event.code === "End") {
-        currentFocusedElement.parentElement.lastElementChild.focus();
-      }
-    }
-
-    window.addEventListener("keydown", handleKeyDown);
-
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, []);
-
+  const { tab, dispatch } = React.useContext(TabContext);
   return (
     <Button
       onClick={() => {
-        setTab(value);
-      }}
-      onFocus={() => {
-        setTab(value);
+        dispatch({
+          type: value,
+          value: value,
+        });
       }}
       role="tab"
       aria-selected={tab === value}

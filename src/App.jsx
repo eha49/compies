@@ -41,6 +41,7 @@ function App() {
           <div>This is some content about Password Tab</div>
         </Tabs.Content>
       </Tabs>
+
       <GlobalStyles />
     </>
   );
