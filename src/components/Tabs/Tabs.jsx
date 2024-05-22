@@ -25,9 +25,38 @@ function List({ children }) {
 function Trigger({ value, children }) {
   const { tab, setTab } = React.useContext(TabContext);
 
+  React.useEffect(() => {
+    function handleKeyDown(event) {
+      const currentFocusedElement = document.activeElement;
+      if (currentFocusedElement.role !== "tab") {
+        return;
+      }
+
+      if (event.code === "ArrowRight") {
+        currentFocusedElement.nextElementSibling?.focus();
+      }
+      if (event.code === "ArrowLeft") {
+        currentFocusedElement.previousElementSibling?.focus();
+      }
+      if (event.code === "Home") {
+        currentFocusedElement.parentElement.firstElementChild.focus();
+      }
+      if (event.code === "End") {
+        currentFocusedElement.parentElement.lastElementChild.focus();
+      }
+    }
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
   return (
     <Button
       onClick={() => {
+        setTab(value);
+      }}
+      onFocus={() => {
         setTab(value);
       }}
       role="tab"
