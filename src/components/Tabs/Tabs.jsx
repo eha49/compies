@@ -1,21 +1,41 @@
-// import React from "react";
+import React from "react";
 import styled from "styled-components";
 import { COLORS } from "../constants";
 
+const TabContext = React.createContext();
+
 function Tabs({ children }) {
-  return <Wrapper>{children}</Wrapper>;
+  const [tab, setTab] = React.useState("tab1");
+  console.log(tab);
+  return (
+    <TabContext.Provider value={{ tab, setTab }}>
+      <Wrapper>{children}</Wrapper>
+    </TabContext.Provider>
+  );
 }
 
 function List({ children }) {
   return <TabList>{children}</TabList>;
 }
 
-function Trigger({ children }) {
-  return <Button>{children}</Button>;
+function Trigger({ value, children }) {
+  const { setTab } = React.useContext(TabContext);
+
+  return (
+    <Button
+      onClick={() => {
+        setTab(value);
+      }}
+    >
+      {children}
+    </Button>
+  );
 }
 
-function Content({ children }) {
-  return <TabContent>{children}</TabContent>;
+function Content({ value, children }) {
+  const { tab } = React.useContext(TabContext);
+
+  return value === tab && <TabContent>{children}</TabContent>;
 }
 
 const Wrapper = styled.div`
@@ -39,7 +59,10 @@ const Button = styled.button`
   }
 `;
 
-const TabContent = styled.div``;
+const TabContent = styled.div`
+  border-top: 1px solid ${COLORS.dark};
+  padding: 16px;
+`;
 
 Tabs.List = List;
 Tabs.Trigger = Trigger;

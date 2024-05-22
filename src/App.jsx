@@ -31,9 +31,15 @@ function App() {
       /> */}
       <Tabs>
         <Tabs.List>
-          <Tabs.Trigger>Account</Tabs.Trigger>
-          <Tabs.Trigger>Password</Tabs.Trigger>
+          <Tabs.Trigger value="tab1">Account</Tabs.Trigger>
+          <Tabs.Trigger value="tab2">Password</Tabs.Trigger>
         </Tabs.List>
+        <Tabs.Content value="tab1">
+          <div>This is some content about Account Tab</div>
+        </Tabs.Content>
+        <Tabs.Content value="tab2">
+          <div>This is some content about Password Tab</div>
+        </Tabs.Content>
       </Tabs>
       <GlobalStyles />
     </>
