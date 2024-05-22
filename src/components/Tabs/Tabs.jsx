@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { COLORS } from "../constants";
-import { ArrowDown, ArrowRight } from "react-feather";
 
 const TabContext = React.createContext();
 
@@ -11,6 +10,9 @@ function reducer(tab, action) {
       return action.value;
     }
     case "tab2": {
+      return action.value;
+    }
+    case "tab3": {
       return action.value;
     }
   }

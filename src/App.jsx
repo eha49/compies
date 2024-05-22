@@ -33,12 +33,16 @@ function App() {
         <Tabs.List>
           <Tabs.Trigger value="tab1">Account</Tabs.Trigger>
           <Tabs.Trigger value="tab2">Password</Tabs.Trigger>
+          <Tabs.Trigger value="tab3">Logout</Tabs.Trigger>
         </Tabs.List>
         <Tabs.Content value="tab1">
           <div>This is some content about Account Tab</div>
         </Tabs.Content>
         <Tabs.Content value="tab2">
           <div>This is some content about Password Tab</div>
+        </Tabs.Content>
+        <Tabs.Content value="tab3">
+          <div>This is some content about Logout Tab</div>
         </Tabs.Content>
       </Tabs>
 
