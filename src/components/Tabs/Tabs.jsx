@@ -15,17 +15,27 @@ function Tabs({ children }) {
 }
 
 function List({ children }) {
-  return <TabList>{children}</TabList>;
+  return (
+    <TabList role="tablist" tabIndex={0}>
+      {children}
+    </TabList>
+  );
 }
 
 function Trigger({ value, children }) {
-  const { setTab } = React.useContext(TabContext);
+  const { tab, setTab } = React.useContext(TabContext);
 
   return (
     <Button
       onClick={() => {
         setTab(value);
       }}
+      role="tab"
+      aria-selected={tab === value}
+      aria-controls={value}
+      tabIndex={value === tab ? 0 : -1}
+      $value={value}
+      $tab={tab}
     >
       {children}
     </Button>
@@ -35,7 +45,13 @@ function Trigger({ value, children }) {
 function Content({ value, children }) {
   const { tab } = React.useContext(TabContext);
   return (
-    <TabContent $value={value} $tab={tab}>
+    <TabContent
+      $value={value}
+      $tab={tab}
+      role="tabpanel"
+      tabIndex={0}
+      aria-labelledby={value}
+    >
       {children}
     </TabContent>
   );
@@ -50,12 +66,17 @@ const Wrapper = styled.div`
 
 const TabList = styled.div`
   display: flex;
+  outline: none;
 `;
 
 const Button = styled.button`
   border: none;
   background: transparent;
   padding: 12px 18px;
+  border-bottom: ${(props) =>
+    Object.is(props.$tab, props.$value)
+      ? "2px solid currentColor"
+      : "none"};
 
   ${TabList} & {
     flex: 1;
