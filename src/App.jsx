@@ -3,7 +3,11 @@
 // import LoginForm from "./components/Modal/LoginForm";
 // import Modal from "./components/Modal/Modal";
 // import RadioGroup from "./components/RadioGroup/RadioGroup";
-import Tabs from "./components/Tabs/Tabs";
+// import Tabs from "./components/Tabs/Tabs";
+import {
+  Breadcrumbs,
+  Crumbs,
+} from "./components/Breadcrumbs/Breadcrumbs";
 import { styled, createGlobalStyle } from "styled-components";
 import { COLORS, VALID_LANGUAGES } from "./components/constants";
 
@@ -29,7 +33,7 @@ function App() {
         groupItems={VALID_LANGUAGES}
         itemName="current-language"
       /> */}
-      <Tabs>
+      {/* <Tabs>
         <Tabs.List>
           <Tabs.Trigger value="tab1">Account</Tabs.Trigger>
           <Tabs.Trigger value="tab2">Password</Tabs.Trigger>
@@ -44,7 +48,13 @@ function App() {
         <Tabs.Content value="tab3">
           <div>This is some content about Logout Tab</div>
         </Tabs.Content>
-      </Tabs>
+      </Tabs> */}
+      <Breadcrumbs>
+        <Crumbs href="/">Home</Crumbs>
+        <Crumbs href="/tops">Tops</Crumbs>
+        <Crumbs href="/tops/shirts">Shirts</Crumbs>
+        <Crumbs href="/tops/shirts/casuals">Causals</Crumbs>
+      </Breadcrumbs>
 
       <GlobalStyles />
     </>
