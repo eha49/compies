@@ -14,7 +14,7 @@ function reducer(tab, action) {
 
 function Tabs({ children }) {
   const [tab, dispatch] = React.useReducer(reducer, "tab1");
-  console.log("rendered");
+
   React.useEffect(() => {
     const keydownCodes = ["ArrowLeft", "ArrowRight", "Home", "End"];
 
