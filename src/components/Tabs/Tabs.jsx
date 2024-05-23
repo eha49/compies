@@ -14,7 +14,7 @@ function reducer(tab, action) {
 
 function Tabs({ children }) {
   const [tab, dispatch] = React.useReducer(reducer, "tab1");
-
+  console.log("rendered");
   React.useEffect(() => {
     const keydownCodes = ["ArrowLeft", "ArrowRight", "Home", "End"];
 
@@ -28,14 +28,11 @@ function Tabs({ children }) {
       }
       if (event.code === "ArrowLeft") {
         currentActiveElement.previousElementSibling?.focus();
-      }
-      if (event.code === "ArrowRight") {
+      } else if (event.code === "ArrowRight") {
         currentActiveElement.nextElementSibling?.focus();
-      }
-      if (event.code === "Home") {
+      } else if (event.code === "Home") {
         currentActiveElement.parentElement.firstElementChild?.focus();
-      }
-      if (event.code === "End") {
+      } else if (event.code === "End") {
         currentActiveElement.parentElement.lastChild?.focus();
       }
     }
@@ -66,13 +63,10 @@ function Trigger({ value, children }) {
   const { tab, dispatch } = React.useContext(TabContext);
   return (
     <Button
-      onClick={() => {
-        dispatch({
-          type: value,
-          value: value,
-        });
-      }}
       onFocus={() => {
+        if (value === tab) {
+          return;
+        }
         dispatch({
           type: value,
           value: value,
