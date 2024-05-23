@@ -50,7 +50,9 @@ function App() {
         </Tabs.Content>
       </Tabs> */}
       <Breadcrumbs>
-        <Crumbs href="/">Home</Crumbs>
+        <Crumbs href="/" isCurrentPage={true}>
+          Home
+        </Crumbs>
         <Crumbs href="/tops">Tops</Crumbs>
         <Crumbs href="/tops/shirts">Shirts</Crumbs>
         <Crumbs href="/tops/shirts/casuals">Causals</Crumbs>

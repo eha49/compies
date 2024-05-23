@@ -24,9 +24,20 @@ const BreadcrumbList = styled.ol`
 
 const CrumbWrapper = styled.li`
   display: inline;
+  --spacing: 12px;
 
   &:not(:first-of-type) {
-    margin-left: 8px;
+    margin-left: var(--spacing);
+
+    &::before {
+      content: "";
+      display: inline-block;
+      height: 0.85em;
+      margin-right: var(--spacing);
+      border-right: 0.1em solid currentColor;
+      transform: rotate(15deg);
+      opacity: 0.4;
+    }
   }
 `;
 
