@@ -4,10 +4,11 @@
 // import Modal from "./components/Modal/Modal";
 // import RadioGroup from "./components/RadioGroup/RadioGroup";
 // import Tabs from "./components/Tabs/Tabs";
-import {
-  Breadcrumbs,
-  Crumbs,
-} from "./components/Breadcrumbs/Breadcrumbs";
+// import {
+//   Breadcrumbs,
+//   Crumbs,
+// } from "./components/Breadcrumbs/Breadcrumbs";
+import Accordion from "./components/Accordion/Accordion";
 import { styled, createGlobalStyle } from "styled-components";
 import { COLORS, VALID_LANGUAGES } from "./components/constants";
 
@@ -49,14 +50,21 @@ function App() {
           <div>This is some content about Logout Tab</div>
         </Tabs.Content>
       </Tabs> */}
-      <Breadcrumbs>
+      {/* <Breadcrumbs>
         <Crumbs href="/" isCurrentPage={true}>
           Home
         </Crumbs>
         <Crumbs href="/tops">Tops</Crumbs>
         <Crumbs href="/tops/shirts">Shirts</Crumbs>
         <Crumbs href="/tops/shirts/casuals">Causals</Crumbs>
-      </Breadcrumbs>
+      </Breadcrumbs> */}
+
+      <Accordion>
+        <Accordion.Item>
+          <Accordion.Trigger>Is this working?</Accordion.Trigger>
+          <Accordion.Content>Yes!</Accordion.Content>
+        </Accordion.Item>
+      </Accordion>
 
       <GlobalStyles />
     </>
