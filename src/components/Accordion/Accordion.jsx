@@ -34,7 +34,12 @@ function Trigger({ value, children }) {
 }
 
 function Content({ value, children }) {
-  return <ContentWrapper>{children}</ContentWrapper>;
+  const { content } = React.useContext(AccordionContext);
+  const isShown = content.itemValue === value && content.isDisplayed;
+
+  return (
+    <ContentWrapper $isShown={isShown}>{children}</ContentWrapper>
+  );
 }
 
 const Wrapper = styled.div`
@@ -62,6 +67,8 @@ const Button = styled.button`
 const ContentWrapper = styled.div`
   padding-left: var(--spacing);
   padding-right: var(--spacing);
+
+  display: ${(props) => (props.$isShown ? "revert" : "none")};
 `;
 
 Accordion.Item = Item;
