@@ -2,18 +2,44 @@ import React from "react";
 import styled from "styled-components";
 import { ChevronDown } from "react-feather";
 
+const AccordionContext = React.createContext();
+
 function Accordion({ children }) {
-  return <Wrapper>{children}</Wrapper>;
+  const [content, setContent] = React.useState({
+    itemValue: "item-1",
+    isDisplayed: true,
+  });
+  console.log(content);
+  return (
+    <AccordionContext.Provider value={{ content, setContent }}>
+      <Wrapper>{children}</Wrapper>
+    </AccordionContext.Provider>
+  );
 }
 
 function Item({ children }) {
   return <div>{children}</div>;
 }
 
-function Trigger({ children }) {
+function Trigger({ value, children }) {
+  const { content, setContent } = React.useContext(AccordionContext);
+
+  function displayContent() {
+    if (content.itemValue === value) {
+      setContent({
+        ...content,
+        isDisplayed: !content.isDisplayed,
+      });
+    } else {
+      setContent({
+        itemValue: value,
+        isDisplayed: true,
+      });
+    }
+  }
   return (
     <TriggerHeading>
-      <Button>
+      <Button onClick={displayContent}>
         {children}
         <ChevronDown strokeWidth={1.5} />
       </Button>
@@ -21,7 +47,7 @@ function Trigger({ children }) {
   );
 }
 
-function Content({ children }) {
+function Content({ value, children }) {
   return <ContentWrapper>{children}</ContentWrapper>;
 }
 

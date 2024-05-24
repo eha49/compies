@@ -61,8 +61,10 @@ function App() {
 
       <Accordion>
         <Accordion.Item>
-          <Accordion.Trigger>Is this working?</Accordion.Trigger>
-          <Accordion.Content>Yes!</Accordion.Content>
+          <Accordion.Trigger value="item-1">
+            Is this working?
+          </Accordion.Trigger>
+          <Accordion.Content value="item-1">Yes!</Accordion.Content>
         </Accordion.Item>
       </Accordion>
 
