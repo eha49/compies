@@ -4,6 +4,7 @@ import { ChevronDown } from "react-feather";
 import AccordionProvider, {
   AccordionContext,
 } from "./AccordionProvider";
+import { COLORS } from "../constants";
 
 function Accordion({ children }) {
   return (
@@ -18,7 +19,9 @@ function Item({ children }) {
 }
 
 function Trigger({ value, children }) {
-  const { displayContent } = React.useContext(AccordionContext);
+  const { content, displayContent } =
+    React.useContext(AccordionContext);
+  const { isDisplayed } = content;
   return (
     <TriggerHeading>
       <Button
@@ -27,7 +30,7 @@ function Trigger({ value, children }) {
         }}
       >
         {children}
-        <ChevronDown strokeWidth={1.5} />
+        <StyledChevron strokeWidth={1.5} $isDisplayed={isDisplayed} />
       </Button>
     </TriggerHeading>
   );
@@ -46,7 +49,8 @@ const Wrapper = styled.div`
   --spacing: 20px;
   width: 320px;
   max-width: 100%;
-  border: 2px solid green;
+  border: 1px solid ${COLORS.dark};
+  border-radius: 4px;
 `;
 const TriggerHeading = styled.h3`
   margin: 0;
@@ -62,6 +66,10 @@ const Button = styled.button`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  &:not(:last-of-type) {
+    border-bottom: 1px solid ${COLORS.dark};
+  }
 `;
 
 const ContentWrapper = styled.div`
@@ -69,6 +77,11 @@ const ContentWrapper = styled.div`
   padding-right: var(--spacing);
 
   display: ${(props) => (props.$isShown ? "revert" : "none")};
+`;
+
+const StyledChevron = styled(ChevronDown)`
+  transform: ${(props) =>
+    props.$isDisplayed ? "rotate(180deg)" : "rotate(0deg)"};
 `;
 
 Accordion.Item = Item;
