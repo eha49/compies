@@ -28,6 +28,8 @@ function Trigger({ value, children }) {
         onClick={() => {
           displayContent(value);
         }}
+        aria-expanded={isShown}
+        aria-controls={value}
       >
         {children}
         <StyledChevron strokeWidth={1.5} $isShown={isShown} />
@@ -41,7 +43,13 @@ function Content({ value, children }) {
   const isShown = content.itemValue === value && content.isDisplayed;
 
   return (
-    <ContentWrapper $isShown={isShown}>{children}</ContentWrapper>
+    <ContentWrapper
+      $isShown={isShown}
+      role="region"
+      aria-labelledby={value}
+    >
+      {children}
+    </ContentWrapper>
   );
 }
 
