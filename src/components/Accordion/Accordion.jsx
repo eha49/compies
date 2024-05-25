@@ -81,11 +81,17 @@ const Button = styled.button`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  &:focus {
+    outline: 2px solid currentColor;
+    -moz-outline-radius: 4px;
+  }
 `;
 
 const ContentWrapper = styled.div`
-  padding-left: var(--spacing);
-  padding-right: var(--spacing);
+  padding: var(--spacing);
+  padding-top: 12px;
+  padding-bottom: 12px;
   border-top: 1px solid ${COLORS.dark};
   display: ${(props) => (props.$isShown ? "revert" : "none")};
 `;

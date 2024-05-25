@@ -64,14 +64,26 @@ function App() {
           <Accordion.Trigger value="item-1">
             Is this working?
           </Accordion.Trigger>
-          <Accordion.Content value="item-1">Yes!</Accordion.Content>
+          <Accordion.Content value="item-1">
+            Yes, it is working.
+          </Accordion.Content>
         </Accordion.Item>
         <Accordion.Item>
           <Accordion.Trigger value="item-2">
-            Is this also working?
+            Is this unstyled?
           </Accordion.Trigger>
           <Accordion.Content value="item-2">
-            Yes again!
+            Yes, it is unstyled by default. Only the borders have been
+            added.
+          </Accordion.Content>
+        </Accordion.Item>
+        <Accordion.Item>
+          <Accordion.Trigger value="item-3">
+            Is this easy to use?
+          </Accordion.Trigger>
+          <Accordion.Content value="item-3">
+            Yes, the consumer only has to give a specific and unique
+            value to each trigger and content.
           </Accordion.Content>
         </Accordion.Item>
       </Accordion>
