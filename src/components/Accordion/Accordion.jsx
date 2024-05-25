@@ -15,13 +15,13 @@ function Accordion({ children }) {
 }
 
 function Item({ children }) {
-  return <div>{children}</div>;
+  return <ItemWrapper>{children}</ItemWrapper>;
 }
 
 function Trigger({ value, children }) {
   const { content, displayContent } =
     React.useContext(AccordionContext);
-  const { isDisplayed } = content;
+  const isShown = content.itemValue === value && content.isDisplayed;
   return (
     <TriggerHeading>
       <Button
@@ -30,7 +30,7 @@ function Trigger({ value, children }) {
         }}
       >
         {children}
-        <StyledChevron strokeWidth={1.5} $isDisplayed={isDisplayed} />
+        <StyledChevron strokeWidth={1.5} $isShown={isShown} />
       </Button>
     </TriggerHeading>
   );
@@ -52,6 +52,13 @@ const Wrapper = styled.div`
   border: 1px solid ${COLORS.dark};
   border-radius: 4px;
 `;
+
+const ItemWrapper = styled.div`
+  &:not(:last-of-type) {
+    border-bottom: 1px solid ${COLORS.dark};
+  }
+`;
+
 const TriggerHeading = styled.h3`
   margin: 0;
 `;
@@ -66,22 +73,18 @@ const Button = styled.button`
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  &:not(:last-of-type) {
-    border-bottom: 1px solid ${COLORS.dark};
-  }
 `;
 
 const ContentWrapper = styled.div`
   padding-left: var(--spacing);
   padding-right: var(--spacing);
-
+  border-top: 1px solid ${COLORS.dark};
   display: ${(props) => (props.$isShown ? "revert" : "none")};
 `;
 
 const StyledChevron = styled(ChevronDown)`
   transform: ${(props) =>
-    props.$isDisplayed ? "rotate(180deg)" : "rotate(0deg)"};
+    props.$isShown ? "rotate(180deg)" : "rotate(0deg)"};
 `;
 
 Accordion.Item = Item;

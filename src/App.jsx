@@ -66,6 +66,14 @@ function App() {
           </Accordion.Trigger>
           <Accordion.Content value="item-1">Yes!</Accordion.Content>
         </Accordion.Item>
+        <Accordion.Item>
+          <Accordion.Trigger value="item-2">
+            Is this also working?
+          </Accordion.Trigger>
+          <Accordion.Content value="item-2">
+            Yes again!
+          </Accordion.Content>
+        </Accordion.Item>
       </Accordion>
 
       <GlobalStyles />
