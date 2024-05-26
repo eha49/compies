@@ -8,7 +8,8 @@
 //   Breadcrumbs,
 //   Crumbs,
 // } from "./components/Breadcrumbs/Breadcrumbs";
-import Accordion from "./components/Accordion/Accordion";
+// import Accordion from "./components/Accordion/Accordion";
+import ProgressBar from "./components/ProgressBar/ProgressBar";
 import { styled, createGlobalStyle } from "styled-components";
 import { COLORS, VALID_LANGUAGES } from "./components/constants";
 
@@ -59,7 +60,7 @@ function App() {
         <Crumbs href="/tops/shirts/casuals">Causals</Crumbs>
       </Breadcrumbs> */}
 
-      <Accordion>
+      {/* <Accordion>
         <Accordion.Item>
           <Accordion.Trigger value="item-1">
             Is this working?
@@ -86,7 +87,9 @@ function App() {
             value to each trigger and content.
           </Accordion.Content>
         </Accordion.Item>
-      </Accordion>
+      </Accordion> */}
+
+      <ProgressBar value={90} />
 
       <GlobalStyles />
     </>
