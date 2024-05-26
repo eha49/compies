@@ -89,7 +89,7 @@ function App() {
         </Accordion.Item>
       </Accordion> */}
 
-      <ProgressBar value={90} />
+      <ProgressBar value={90} size="medium" />
 
       <GlobalStyles />
     </>
