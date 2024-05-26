@@ -15,7 +15,7 @@ const STYLES = {
   },
   large: {
     height: 16,
-    radius: 4,
+    radius: 8,
     padding: 4,
   },
 };
@@ -56,19 +56,19 @@ const Wrapper = styled.div`
   background: ${COLORS.transparentGray15};
   padding: var(--padding);
   width: 500px;
-  border-radius: calc(var(--radius) + var(--padding));
+  border-radius: var(--radius);
 `;
 
 const BarWrapper = styled.div`
   overflow: hidden;
-  border-radius: var(--radius);
+  border-radius: 4px;
 `;
 
 const Bar = styled.div`
   width: var(--width);
   height: var(--height);
   background: ${COLORS.blue};
-  border-radius: var(--radius) 0 0 var(--radius);
+  border-radius: 4px 0 0 4px;
 `;
 
 export default ProgressBar;
