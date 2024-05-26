@@ -33,12 +33,14 @@ function ProgressBar({ value, size }) {
       style={{ "--padding": style.padding + "px" }}
     >
       <VisuallyHidden>{value}</VisuallyHidden>
-      <Bar
-        style={{
-          "--width": value + "%",
-          "--height": style.height + "px",
-        }}
-      />
+      <BarWrapper>
+        <Bar
+          style={{
+            "--width": value + "%",
+            "--height": style.height + "px",
+          }}
+        />
+      </BarWrapper>
     </Wrapper>
   );
 }
@@ -49,7 +51,11 @@ const Wrapper = styled.div`
   padding: var(--padding);
   width: 500px;
   border-radius: 4px;
+`;
+
+const BarWrapper = styled.div`
   overflow: hidden;
+  border-radius: 4px;
 `;
 
 const Bar = styled.div`
